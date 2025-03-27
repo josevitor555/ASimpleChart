@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 
 import { TrendingUp } from "lucide-react"
@@ -6,15 +6,6 @@ import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-
-const chartData = [
-  { month: "Janeiro", desktop: 186, mobile: 80 },
-  { month: "Fevereiro", desktop: 305, mobile: 200 },
-  { month: "Março", desktop: 237, mobile: 120 },
-  { month: "Abril", desktop: 73, mobile: 190 },
-  { month: "Maio", desktop: 209, mobile: 130 },
-  { month: "Junho", desktop: 214, mobile: 140 },
-];
 
 const chartConfig = {
   desktop: {
@@ -28,6 +19,21 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ChartEaxample() {
+
+  const [chartData, setChartData] = useState([]);
+
+  // fetch data from the backend
+  useEffect(() => {
+    fetch("http://localhost:3000/api/chart-data")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Data fetched from backend:', JSON.stringify(data, null, 2));
+      setChartData(data);
+    })
+    .catch((error) => {
+      console.error(`Error fetching chart data: ${error}`);
+    });
+  }, []);
 
   return (
     <>

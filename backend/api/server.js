@@ -11,11 +11,9 @@ import chartData from './chart_data/chart_data.js';
 
 // Configure the Middleware
 import cors from 'cors';
-app.use(cors(
-    {
-        origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-    }
-));
+app.use(cors({
+    origin: ['http://localhost:5173', 'http://localhost:3000'],
+}));
 
 // define a simple route
 app.get('/', (req, res) => {
@@ -24,6 +22,7 @@ app.get('/', (req, res) => {
 
 // Define a route to get chart data
 app.get('/api/chart-data', (req, res) => {
+    console.log(`Request received for chart data.`);
     res.json(chartData);
 });
 
