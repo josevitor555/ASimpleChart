@@ -14,7 +14,7 @@ const chartData = [
   { month: "Abril", desktop: 73, mobile: 190 },
   { month: "Maio", desktop: 209, mobile: 130 },
   { month: "Junho", desktop: 214, mobile: 140 },
-]
+];
 
 const chartConfig = {
   desktop: {
@@ -31,7 +31,7 @@ export function ChartEaxample() {
 
   return (
     <>
-      <Card>
+      <Card className='bg-slate-100'>
       <CardHeader>
         <CardTitle className='text-2xl font-extralight'> Gráfico de Área - Empilhado </CardTitle>
         <CardDescription className='text-base font-extralight'> A mostrar o total de visitantes nos últimos 6 meses </CardDescription>
@@ -81,7 +81,7 @@ export function ChartEaxample() {
               Tendência de Alta de 5,2% ao mês <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground"> Janeiro - Junho 2024 </div>
-            <Button className='mt-2 bg-gray-900 text-amber-50'> Mais detalhes </Button>
+            <Button className='mt-2 bg-gray-900 text-amber-50 cursor-pointer'> Mais detalhes </Button>
           </div>
         </div>
       </CardFooter>
